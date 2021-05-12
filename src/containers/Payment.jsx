@@ -4,8 +4,14 @@ import '../styles/components/Payment.css';
 
 const Payment = () => {
   return (
-    <div>
-      <h1>Payment</h1>
+    <div className='payment'>
+      <div className="payment-content">
+        <h3>Resumen del Pedido:</h3>
+        <div className="payment-button">
+          Boton de pago con Paypal
+        </div>
+      </div>
+      <div className="sidebar"></div>
     </div>
   );
 };

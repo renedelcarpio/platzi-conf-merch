@@ -4,8 +4,14 @@ import '../styles/components/Success.css';
 
 const Success = () => {
   return (
-    <div>
-      <h1>Success</h1>
+    <div className='success'>
+      <div className="success-content">
+        <h2>Nombre, Gracias por tu compra!</h2>
+        <span>Tu pedido llegará en 3 días a tu dirección</span>
+        <div className="success-map">
+          Google Maps
+        </div>
+      </div>
     </div>
   );
 };
