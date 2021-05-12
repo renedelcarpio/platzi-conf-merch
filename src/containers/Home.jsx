@@ -1,11 +1,13 @@
 import React from 'react';
 
 import '../styles/components/Home.css';
+import initialState from '../initialState'
+import Products from '../components/Products'
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Products products={initialState.products} />
     </div>
   );
 };
