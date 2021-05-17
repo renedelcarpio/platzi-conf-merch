@@ -1,36 +1,37 @@
 import React, { useContext } from 'react';
-import { PayPalButton } from 'react-paypal-button'
+import { PayPalButton } from 'react-paypal-button';
 
 import '../styles/components/Payment.css';
-import AppContext from '../context/AppContext'
+import AppContext from '../context/AppContext';
 
 const Payment = ({ history }) => {
-  const { state, addNewOrder } = useContext(AppContext)
-  const { cart, buyer } = state
+  const { state, addNewOrder } = useContext(AppContext);
+  const { cart, buyer } = state;
 
   const paypalOptions = {
-    clientId: 'Aei1wg0SjGtlNvSM68wqxQElmlWvmCua0iMst6ArG8sfaccnakP3X24uKiqeoMiYB00QPiys__5PQQDC',
+    clientId:
+      'Aei1wg0SjGtlNvSM68wqxQElmlWvmCua0iMst6ArG8sfaccnakP3X24uKiqeoMiYB00QPiys__5PQQDC',
     intent: 'capture',
-    currency: 'USD'
-  }
+    currency: 'USD',
+  };
 
   const buttonStyles = {
     layout: 'vertical',
-    shape: 'rect'
-  }
+    shape: 'rect',
+  };
 
   const handlePaymentSuccess = (data) => {
-    console.log(data)
-    if(data.status === 'COMPLETED'){
+    console.log(data);
+    if (data.status === 'COMPLETED') {
       const newOrder = {
         buyer,
         product: cart,
-        payment: data
-      }
-      addNewOrder(newOrder)
-      history.push('/checkout/success')
+        payment: data,
+      };
+      addNewOrder(newOrder);
+      history.push('/checkout/success');
     }
-  }
+  };
 
   const handleSumTotal = () => {
     const reducer = (accumulator, currentValue) =>
@@ -57,9 +58,9 @@ const Payment = ({ history }) => {
             buttonStyles={buttonStyles}
             amount={handleSumTotal()}
             onPaymentStart={() => console.log('Start Payment')}
-            onPaymentSuccess={data => handlePaymentSuccess(data)}
-            onPaymentError={error => console.log(error)}
-            onPaymentCancel={data => console.log(data)}
+            onPaymentSuccess={(data) => handlePaymentSuccess(data)}
+            onPaymentError={(error) => console.log(error)}
+            onPaymentCancel={(data) => console.log(data)}
           />
         </div>
       </div>
