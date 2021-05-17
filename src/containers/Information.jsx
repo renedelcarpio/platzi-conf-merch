@@ -2,16 +2,16 @@ import React, { useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../styles/components/Information.css';
-import AppContext from '../context/AppContext'
+import AppContext from '../context/AppContext';
 
-const Information = () => {
-  const { state, addToBuyer } = useContext(AppContext)
-  const form = useRef(null)
-
-  const {cart} = state
+const Information = ({ history }) => {
+  const { state, addToBuyer } = useContext(AppContext);
+  const form = useRef(null);
+  const { cart } = state;
 
   const handleSubmit = () => {
-    const formData = new FormData(form.current)
+    const formData = new FormData(form.current);
+    //prettier-ignore
     const buyer = {
       'name': formData.get('name'),
       'email': formData.get('email'),
@@ -22,9 +22,10 @@ const Information = () => {
       'state': formData.get('state'),
       'cp': formData.get('cp'),
       'phone': formData.get('phone'),
-    }
-    addToBuyer(buyer)
-  }
+    };
+    addToBuyer(buyer);
+    history.push('/checkout/payment')
+  };
 
   return (
     <div className="information">
@@ -47,10 +48,12 @@ const Information = () => {
         </div>
         <div className="information-buttons">
           <div className="information-back">
-            <Link to='/checkout'>Regresar</Link>
+            <Link to="/checkout">Regresar</Link>
           </div>
           <div className="information-next">
-            <button type='button' onClick={handleSubmit}>Pagar</button>
+            <button type="button" onClick={handleSubmit}>
+              Pagar
+            </button>
           </div>
         </div>
       </div>
