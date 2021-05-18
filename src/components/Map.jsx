@@ -1,28 +1,23 @@
-import React from 'react'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import React from 'react';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Map = () => {
+  const mapStyles = {
+    height: '50vh',
+    width: '100%',
+  };
 
-    const mapStyles = {
-        height: '50vh',
-        width: '100%'
-    }
+  const defaultCenter = {
+    lat: 19.4267261,
+    lng: -99.1718796,
+  };
+  return (
+    <LoadScript googleMapsApiKey="AIzaSyAIbEziUAOwAHRY5ZmsTVv0lUfan104C2g">
+      <GoogleMap mapContainerStyle={mapStyles} zoom={9} center={defaultCenter}>
+        <Marker position={defaultCenter} />
+      </GoogleMap>
+    </LoadScript>
+  );
+};
 
-    const defaultCenter = {
-        lat: 19.4267261,
-        lng: -99.1718796
-    }
-    return (
-        <LoadScript googleMapsApiKey='AIzaSyAIbEziUAOwAHRY5ZmsTVv0lUfan104C2g'>
-            <GoogleMap
-                mapContainerStyle={mapStyles}
-                zoom={9}
-                center={defaultCenter}
-            >
-                <Marker position={defaultCenter}/>
-            </GoogleMap>
-        </LoadScript>
-    )
-}
-
-export default Map
+export default Map;
