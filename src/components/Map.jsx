@@ -1,9 +1,9 @@
 import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-const API_KEY = 'AIzaSyAIbEziUAOwAHRY5ZmsTVv0lUfan104C2g'
+const API_KEY = 'AIzaSyAIbEziUAOwAHRY5ZmsTVv0lUfan104C2g';
 
-const Map = ({data}) => {
+const Map = ({ data }) => {
   const mapStyles = {
     height: '50vh',
     width: '100%',
